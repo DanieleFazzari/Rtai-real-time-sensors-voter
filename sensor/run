@@ -1,0 +1,25 @@
+#!/bin/bash
+
+libpath=`rtai-config --library-dir`
+
+if [ "$libpath" == "" ]; then
+echo "ERROR: please set your PATH variable to <rtai-install>/bin"
+exit
+fi
+
+export LD_LIBRARY_PATH=$libpath:$LD_LIBRARY_PATH
+
+if [ $UID != 0 ]; then SUDO="sudo "; else SUDO=""; fi
+echo
+echo "*** SENSOR TASK ***"
+echo "Press <enter> to load RTAI modules:"
+read junk
+./ldmod
+echo
+echo "Now start the realtime process <enter> (CTRL+C to terminate it):"
+read junk
+./sensor
+echo ""
+echo "Now remove the modules <enter>:"
+read junk
+./remod

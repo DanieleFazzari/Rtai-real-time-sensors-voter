@@ -1,0 +1,1 @@
+cmd_/home/rtai/Scrivania/PSSTR/Intercorso_2/voter/voter_rt.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/rtai/Scrivania/PSSTR/Intercorso_2/voter/voter_rt.ko /home/rtai/Scrivania/PSSTR/Intercorso_2/voter/voter_rt.o /home/rtai/Scrivania/PSSTR/Intercorso_2/voter/voter_rt.mod.o ;  true

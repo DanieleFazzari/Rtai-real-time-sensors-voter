@@ -1,0 +1,21 @@
+PSSTR Prova Pratica in Itinere n. 1 - a.a. 2020/21
+
+Completare il codice in voter.c implementando 3 task hard real time periodici kernel level 
+per il calcolo del valore corretto dei 3 sensori altitudine, velocità, temperatura.
+
+Il Makefile è già predisposto e non va modificato. 
+Il file parameters.h contiene le definizioni degli identificativi da usare per le shared 
+memory e le relative strutture, da inizializzare nella init_module di voter.c attraverso
+la rtai_kmalloc (consultare simple.rt per un esempio di come dichiarare e utilizzare la
+struct in shared memory). Il file parameters.h non va modificato.
+
+Una volta implementato e compilato voter.c in voter_rt.ko, l'esempio va eseguito lanciando 
+dapprima "sensor", attraverso il suo script run, e poi inserendo il modulo voter con 
+"insmod voter_rt.ko" in un altro terminale.
+sensor.c simula il funzionamento dei 3 sensori ridondati, con errore. Non è necessario
+ispezionarlo o modificarlo, vanno solo utilizzate opportunamente le shared memory in voter.c.
+
+Per terminare l'esecuzione, è necessario prima fermare il modulo voter con rmmod voter_rt e 
+poi fermare sensor con CTRL+C e un ulteriore invio nel terminale in cui esegue. Lo script
+run di sensor provvede ad inserire ed eliminare i moduli RTAI.
+
